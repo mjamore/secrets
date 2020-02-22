@@ -58,7 +58,7 @@ app.post('/secrets', (request, response) => {
             response.status(503).json(errorResponse);
         } else {
             // per API cookbook, set Location response header and return POST body with 201
-            console.info('Result of DynamoDB put-item : ' ,data);
+            console.info('Result of DynamoDB put-item : ' , data);
             response.set('Location', dynamoObjects.simple.href);
             response.status(201).json(dynamoObjects.simple);
         }
@@ -67,6 +67,7 @@ app.post('/secrets', (request, response) => {
 
 
 /************** Start HTTP server **************/
-app.listen('3002', () => {
-    console.log('listening on http://localhost:3002');
+const PORT = 3002;
+app.listen(PORT, () => {
+    console.log(`Application is running on http://localhost:${PORT}`);
 });
